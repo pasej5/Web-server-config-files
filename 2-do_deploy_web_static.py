@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Script distributes an archive to your web servers,"""
+"""Script distributes an archives to my server 1 and 2"""
 from fabric.contrib import files
 from fabric.api import env, put, run
 import os
@@ -8,7 +8,7 @@ env.hosts = ['100.26.236.53', '107.22.144.34']
 
 
 def do_deploy(archive_path):
-    """Function for deploy"""
+    """Do_deploy function for deploying"""
     if not os.path.exists(archive_path):
         return False
 
@@ -28,4 +28,4 @@ def do_deploy(archive_path):
         run('ln -s {} /data/web_static/current'.format(dest))
         return True
     except Exception:
-        return False
+       return False

@@ -1,8 +1,9 @@
-# HTTP header
+#custom HTTP header for web 2
+
 sudo sed -i "/server_name _/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-enabled/default
 
-#test for syntax error
+#test for all stynax errors
 sudo nginx -t
 
-#restart nginx after making changes
+#Restart the nginx
 sudo service nginx restart

@@ -1,0 +1,5 @@
+# using sed to perform redirections
+
+replacement_file="server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/pasej5 permanent;"
+
+sudo sed -i "s/server_name _;/$replacement_file/" /etc/nginx/sites-enabled/default

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#Transfer a file to your server
+## Accepts 4 parameters: path, IP address, username, path to SSH key
+# scp must transfer the file to the user's home directory ~/
+# Strict host key checking must be disabled when using scp
+
+if [ $# -lt 3 ]; then
+    echo "Usage: ${0#./} PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+    exit 1
+fi
+
+FILE_PATH=$1
+IP_ADDRESS=$2
+USERNAME=$3
+SSH_KEY=$4
+if [ $# -eq 3 ]; then
+    scp -o StrictHostKeyChecking=no "$FILE_PATH" "$USERNAME@$IP_ADDRESS":~/
+else
+    scp -o StrictHostKeyChecking=no -i "$SSH_KEY" "$FILE_PATH" "$USERNAME@$IP_ADDRESS":~/
+fi
